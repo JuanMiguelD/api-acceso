@@ -24,4 +24,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Hola Mundo serverless" });
 });
 
-module.exports.handler = serverless(app)
+// Iniciar el servidor
+app.listen(port, () => {
+  console.log(`Servidor corriendo en http://localhost:${port}`);
+});
