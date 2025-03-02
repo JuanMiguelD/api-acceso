@@ -1,4 +1,5 @@
 require("dotenv").config();
+const serverless = require('serverless-http');
 const express = require("express");
 const cors = require("cors");
 const { sequelize, initDatabase } = require("./src/config/database");
@@ -20,10 +21,7 @@ app.use("/api", authRoutes);
 
 // Ruta de prueba
 app.get("/", (req, res) => {
-  res.json({ message: "API funcionando 🚀" });
+  res.json({ message: "Hola Mundo serverless" });
 });
 
-// Iniciar el servidor
-app.listen(port, () => {
-  console.log(`Servidor corriendo en http://localhost:${port}`);
-});
+module.exports.handler = serverless(app)
